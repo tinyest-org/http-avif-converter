@@ -1,7 +1,8 @@
 FROM golang:1.21-bullseye AS builder
 
 # RUN apk add aom-dev aom-libs
-RUN apt-get install libaom-dev
+
+RUN apt-get update && apt-get install libaom-dev
 
 WORKDIR $GOPATH/src/http-avif-converter
 
