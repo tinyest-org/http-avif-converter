@@ -9,7 +9,7 @@ COPY . .
 RUN go mod download
 RUN go mod verify
 
-RUN GONOSUMDB=on GOGET=insecure GOINSECURE=proxy.golang.org CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /main .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /main .
 
 FROM gcr.io/distroless/static-debian11
 
