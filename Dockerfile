@@ -2,7 +2,6 @@ FROM golang:1.21-alpine AS builder
 
 RUN apk add aom-dev
 
-
 WORKDIR $GOPATH/src/smallest-golang/app/
 
 COPY . .
@@ -19,3 +18,5 @@ COPY --from=builder /main .
 USER small-user:small-user
 
 CMD ["./main"]
+
+EXPOSE 8100
