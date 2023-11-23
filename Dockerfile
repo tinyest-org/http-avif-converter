@@ -1,8 +1,8 @@
-FROM golang:1.21-alpine AS builder
+FROM golang:1.21-debian AS builder
 
-RUN apk add aom-dev
+RUN apk add aom-dev aom-libs
 
-WORKDIR $GOPATH/src/smallest-golang/app/
+WORKDIR $GOPATH/src/http-avif-converter
 
 COPY . .
 
