@@ -27,12 +27,11 @@ func uploadFileHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer file.Close()
 
-	
 	img, _, err := image.Decode(file)
 	if err != nil {
-		_ = img
 		log.Fatalf("Can't decode source file: %v", err)
 	}
+
 	err = avif.Encode(w, img, nil)
 	if err != nil {
 		log.Fatalf("Can't encode source image: %v", err)
@@ -41,7 +40,5 @@ func uploadFileHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/upload", uploadFileHandler)
-
-	// Start the server on port 8080
 	http.ListenAndServe(":8100", nil)
 }
