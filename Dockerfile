@@ -1,4 +1,4 @@
-FROM golang:1.21-debian AS builder
+FROM golang:1.21-bullseye AS builder
 
 RUN apk add aom-dev aom-libs
 
