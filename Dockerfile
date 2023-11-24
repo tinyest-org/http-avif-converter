@@ -10,7 +10,7 @@ RUN go mod verify
 
 RUN CGO_ENABLED=1 GOOS=linux go build -o /http-server .
 
-FROM alpine
+FROM debian
 
 COPY --from=builder /http-server /http-server
 
