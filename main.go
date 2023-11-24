@@ -40,5 +40,5 @@ func uploadFileHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/upload", uploadFileHandler)
-	http.ListenAndServe(":8100", nil)
+	http.ListenAndServe("0.0.0.0:8000", nil)
 }
