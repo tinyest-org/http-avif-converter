@@ -2,9 +2,8 @@ FROM golang:1.21-bullseye AS builder
 
 RUN apt-get update && apt-get install libaom-dev -y
 
-WORKDIR /app
-ENV GOPATH /app
-COPY . /app/
+WORKDIR $GOPATH/src/http-avif-converter
+COPY . .
 
 RUN go mod download
 RUN go mod verify
