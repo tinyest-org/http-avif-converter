@@ -11,7 +11,7 @@ RUN go mod verify
 
 RUN go build -o /main .
 
-FROM gcr.io/distroless/static-debian11
+FROM golang:1.21-alpine
 
 COPY --from=builder /main .
 
@@ -19,4 +19,4 @@ COPY --from=builder /main .
 
 CMD ["./main"]
 
-EXPOSE 8100
+EXPOSE 8000
