@@ -1,16 +1,22 @@
 package main
 
 import (
-	"net/http"
-	"github.com/Kagami/go-avif"
 	"image"
 	_ "image/jpeg"
 	_ "image/png"
 	"log"
+	"net/http"
 
+	"github.com/Kagami/go-avif"
 )
 
 func uploadFileHandler(w http.ResponseWriter, r *http.Request) {
+
+	// Only handle POST request
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
 
 	// Parse the request body
 	err := r.ParseMultipartForm(10 << 20) // 10 MB limit
