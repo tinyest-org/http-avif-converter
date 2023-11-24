@@ -7,14 +7,13 @@ COPY . .
 
 RUN go mod download
 RUN go mod verify
-RUN CGO_ENABLED=1 GOOS=linux go build -o /main .
+
+RUN CGO_ENABLED=1 GOOS=linux go build -o /http-server .
 
 FROM alpine
 
-COPY --from=builder /main /main
+COPY --from=builder /http-server /http-server
 
-RUN stat main
-
-CMD ["main"]
+CMD ["/http-server"]
 
 EXPOSE 8000
