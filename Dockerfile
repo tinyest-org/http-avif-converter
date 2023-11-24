@@ -2,24 +2,17 @@ FROM golang:1.21-bullseye AS builder
 
 RUN apt-get update && apt-get install libaom-dev -y
 
-WORKDIR $GOPATH/src/http-avif-converter
-
-COPY . .
+WORKDIR /app
+ENV GOPATH /app
+COPY . /app/
 
 RUN go mod download
 RUN go mod verify
-
-RUN go build -o /main .
+RUN CGO_ENABLED=1 GOOS=linux go build -o /main .
 
 FROM alpine
 
-COPY --from=builder /main .
-
-# USER small-user:small-user
-
-RUN ls -ail
-
-RUN pwd
+COPY --from=build /main /main
 
 CMD ["/main"]
 
