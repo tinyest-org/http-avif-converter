@@ -11,11 +11,15 @@ RUN go mod verify
 
 RUN go build -o /main .
 
-FROM golang:1.21-alpine
+FROM alpine
 
 COPY --from=builder /main .
 
 # USER small-user:small-user
+
+RUN ls
+
+RUN pwd
 
 CMD ["./main"]
 
