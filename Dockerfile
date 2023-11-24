@@ -13,6 +13,8 @@ FROM alpine
 
 COPY --from=builder /main /main
 
-CMD ["/main"]
+RUN stat main
+
+CMD ["main"]
 
 EXPOSE 8000
