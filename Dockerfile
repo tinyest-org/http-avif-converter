@@ -12,7 +12,7 @@ RUN CGO_ENABLED=1 GOOS=linux go build -o /main .
 
 FROM alpine
 
-COPY --from=build /main /main
+COPY --from=builder /main /main
 
 CMD ["/main"]
 
