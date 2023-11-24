@@ -17,7 +17,7 @@ COPY --from=builder /main .
 
 # USER small-user:small-user
 
-RUN ls
+RUN ls -ail
 
 RUN pwd
 
