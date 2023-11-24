@@ -21,6 +21,6 @@ RUN ls
 
 RUN pwd
 
-CMD ["./main"]
+CMD ["/main"]
 
 EXPOSE 8000
