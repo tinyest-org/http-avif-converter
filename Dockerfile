@@ -15,7 +15,7 @@ FROM gcr.io/distroless/static-debian11
 
 COPY --from=builder /main .
 
-USER small-user:small-user
+# USER small-user:small-user
 
 CMD ["./main"]
 
