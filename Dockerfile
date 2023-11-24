@@ -11,7 +11,7 @@ RUN go mod verify
 RUN CGO_ENABLED=1 GOOS=linux go build -o /http-server .
 
 FROM debian
-
+RUN apt-get update && apt-get install libaom-dev -y
 COPY --from=builder /http-server /http-server
 
 CMD ["/http-server"]
